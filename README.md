@@ -79,4 +79,5 @@ This project is licensed under the MIT License.
 > **⚠️ Beta Notice**  
 > Synk is currently in **Beta**. Features are subject to change, and some functionality may be unstable or incomplete.  
 > We encourage you to try it out and share feedback, but please do not use it in production environments yet.
+> 
 > Version 1.0.0
