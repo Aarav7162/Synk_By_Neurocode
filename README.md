@@ -35,6 +35,8 @@ Synk is an accessible, beginner-friendly IDE developed by **NeuroCode**. It is d
    ```bash
    git clone https://github.com/neurocode/Synk_By_Neurocode.git
    cd Synk_By_Neurocode
+   // You will only need the Program.cs file
+   // Viual Studio 2022 Community Edition was used for the development of this project
 
 3. **Build and Run**
    ```bash
@@ -77,3 +79,4 @@ This project is licensed under the MIT License.
 > **⚠️ Beta Notice**  
 > Synk is currently in **Beta**. Features are subject to change, and some functionality may be unstable or incomplete.  
 > We encourage you to try it out and share feedback, but please do not use it in production environments yet.
+> Version 1.0.0
