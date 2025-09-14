@@ -52,18 +52,16 @@ Synk is an accessible, beginner-friendly IDE developed by **NeuroCode**. It is d
 
 5. **Example**
 
-  *Synk*
+   *Synk*
 
-  ```nec
-  start setup
-    pinmode 13 output
-  end setup
+    ```nec
+    start setup
+      pinmode 13 output
+    end setup
 
-  start loop
-    turn on pin 13
-    wait 1 second
-    turn off pin 13
-    wait 1 second
-  end loop
-
-  
+    start loop
+      turn on pin 13
+      wait 1 second
+      turn off pin 13
+      wait 1 second
+    end loop
