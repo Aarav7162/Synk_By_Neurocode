@@ -1,4 +1,4 @@
-# Synk
+# Synk (Beta)
 
 Synk is an accessible, beginner-friendly IDE developed by **NeuroCode**. It is designed to simplify Arduino programming for neurodivergent learners by providing a human-friendly syntax that translates into standard Arduino C++ code.  
 
@@ -19,15 +19,9 @@ Synk is an accessible, beginner-friendly IDE developed by **NeuroCode**. It is d
   - Convert `.nec` files to Arduino-compatible `.ino` format.  
 
 - **Help Center**  
-  Searchable, categorized documentation for all commands with syntax, usage, and examples.  
-
-- **Accessibility Features**  
-  - Adjustable brightness and theme modes.  
-  - Optimized interface for neurodivergent learners.  
-  - Configurable layouts to reduce distractions.  
+  Searchable, categorized documentation for all commands with syntax, usage, and examples.   
 
 - **Additional Tools**  
-  - Export code as PDF for sharing or documentation.  
   - Built-in templates and command snippets.  
   - Optional live compilation preview.  
 
@@ -80,3 +74,6 @@ We welcome contributions. Please open an issue or submit a pull request for disc
 
 This project is licensed under the MIT License.  
 
+> **⚠️ Beta Notice**  
+> Synk is currently in **Beta**. Features are subject to change, and some functionality may be unstable or incomplete.  
+> We encourage you to try it out and share feedback, but please do not use it in production environments yet.
