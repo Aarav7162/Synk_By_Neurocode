@@ -65,3 +65,18 @@ Synk is an accessible, beginner-friendly IDE developed by **NeuroCode**. It is d
       turn off pin 13
       wait 1 second
     end loop
+
+## Roadmap
+
+- Expand the NeuroCode command set with advanced features.  
+- Web-based IDE with collaborative editing.  
+- Synk Academy: integrated tutorials and exercises.  
+
+## Contributing
+
+We welcome contributions. Please open an issue or submit a pull request for discussion before making changes.  
+
+## License
+
+This project is licensed under the MIT License.  
+
