@@ -1,6 +1,6 @@
-# Synk_By_Neurocode
+# Synk
 
-Synk_By_Neurocode is an accessible, beginner-friendly IDE developed by **NeuroCode**. It is designed to simplify Arduino programming for neurodivergent learners by providing a human-friendly syntax that translates into standard Arduino C++ code.  
+Synk is an accessible, beginner-friendly IDE developed by **NeuroCode**. It is designed to simplify Arduino programming for neurodivergent learners by providing a human-friendly syntax that translates into standard Arduino C++ code.  
 
 ## Key Features
 
