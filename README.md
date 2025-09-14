@@ -41,3 +41,40 @@ Synk is an accessible, beginner-friendly IDE developed by **NeuroCode**. It is d
    ```bash
    git clone https://github.com/neurocode/Synk_By_Neurocode.git
    cd Synk_By_Neurocode
+
+3. **Build and Run**
+   ```bash
+   dotnet build
+   dotnet run
+
+4. **Launch the IDE**
+   Start creating `.nec` projects.
+
+5. **Example**
+
+   *Synk*
+   ```nec
+    start setup
+      pinmode 13 output
+    end setup
+
+    start loop
+      turn on pin 13
+      wait 1 second
+      turn off pin 13
+      wait 1 second
+    end loop
+
+  *Arduino*
+  ```ino
+  void setup() {
+    pinMode(13, OUTPUT);
+  }
+
+  void loop() {
+    digitalWrite(13, HIGH);
+    delay(1000);
+    digitalWrite(13, LOW);
+    delay(1000);
+  }
+  
