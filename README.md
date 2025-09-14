@@ -1,1 +1,43 @@
 # Synk_By_Neurocode
+
+Synk_By_Neurocode is an accessible, beginner-friendly IDE developed by **NeuroCode**. It is designed to simplify Arduino programming for neurodivergent learners by providing a human-friendly syntax that translates into standard Arduino C++ code.  
+
+## Key Features
+
+- **Simplified Syntax**  
+  Write commands in plain, intuitive language that automatically convert to `.ino` files.  
+
+- **Arduino Integration**  
+  Built-in support for compiling and uploading code to Arduino boards using Arduino CLI.  
+
+- **Interactive Console IDE**  
+  Includes line numbering, syntax highlighting, autocomplete, command suggestions, and live validation.  
+
+- **File & Project Management**  
+  - Create projects with folders, subfolders, and files (`.nec` or `.ino`).  
+  - Import and export files with ease.  
+  - Convert `.nec` files to Arduino-compatible `.ino` format.  
+
+- **Help Center**  
+  Searchable, categorized documentation for all commands with syntax, usage, and examples.  
+
+- **Accessibility Features**  
+  - Adjustable brightness and theme modes.  
+  - Optimized interface for neurodivergent learners.  
+  - Configurable layouts to reduce distractions.  
+
+- **Additional Tools**  
+  - Export code as PDF for sharing or documentation.  
+  - Built-in templates and command snippets.  
+  - Optional live compilation preview.  
+
+## Getting Started
+
+1. **Install Dependencies**  
+   - [Arduino CLI](https://arduino.github.io/arduino-cli)  
+   - .NET 6.0 or higher  
+
+2. **Clone the Repository**  
+   ```bash
+   git clone https://github.com/neurocode/Synk_By_Neurocode.git
+   cd Synk_By_Neurocode
