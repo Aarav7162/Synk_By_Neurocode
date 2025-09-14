@@ -11,68 +11,7 @@ using AirtableApiClient;
 using System.Linq;
 
 class Program
-{
-    static async Task SubmitHomework()
-    {
-        Console.Write("Enter username: ");
-        string username = Console.ReadLine().Trim();
-
-    Console.WriteLine("Enter your code (end with a single line containing only 'END'):");
-        string code = Console.ReadLine();
-
-        // Airtable credentials
-        string personalAccessToken = "patvFn8i1qnkH4Imu.fd537ccc6a32375de791145b434aa9e2132aa91a1dff56f2de675cc758f9adcd"; // replace with your PAT
-        string baseId = "appsNm6OiCvZaWXku";
-        string tableId = "tblYzmtKOOrMgvmbS";
-
-        // Field IDs (more reliable than names)
-        string usernameFieldId = "fldhPBtRGIeHCXD0o";
-        string codeFieldId = "fldI1VPxS94e15ghl";
-
-        using (var airtableBase = new AirtableBase(personalAccessToken, baseId))
-        {
-            // Step 1: Search for user record by username
-            string formula = $"{{{usernameFieldId}}} = '{username}'";
-            var listResponse = await airtableBase.ListRecords(
-                tableId,
-                filterByFormula: formula
-            );
-
-            if (!listResponse.Success)
-            {
-                Console.WriteLine("❌ Airtable request failed: " + listResponse.AirtableApiError?.ErrorMessage);
-                return;
-            }
-
-            if (!listResponse.Records.Any())
-            {
-                Console.WriteLine("❌ No account registered with that username.");
-                return;
-            }
-
-            var record = listResponse.Records.First();
-
-            // Step 2: Prepare updated fields
-            var updatedFields = new Fields();
-            updatedFields.AddField(codeFieldId, code);
-
-            // Step 3: Update the record
-            var updateResponse = await airtableBase.UpdateRecord(
-                tableId,
-                updatedFields,
-                record.Id
-            );
-
-            if (updateResponse.Success)
-            {
-                Console.WriteLine("✅ Homework submitted successfully!");
-            }
-            else
-            {
-                Console.WriteLine("❌ Failed to submit homework: " + updateResponse.AirtableApiError?.ErrorMessage);
-            }
-        }
-    }
+{}
 
     static void Main()
     {
@@ -154,7 +93,7 @@ class Program
 
         (int left, int top) = Console.GetCursorPosition();
         int option = 1;
-        string decorator = "✅ \u001b[36m"; // FIXED here
+        string decorator = "✅ \u001b[36m";
         ConsoleKeyInfo key;
         bool isSelected = false;
 
@@ -215,8 +154,6 @@ class Program
                     return $"digitalWrite({pin}, {state});";
                 }
             }
-
-            // Unknown or not supported yet
             return $"// Unknown command: {line}";
         }
 
@@ -410,8 +347,6 @@ class Program
             }
 
             Console.Clear();
-
-            // 🔧 Your custom project setup logic here
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("");
             Console.ResetColor();
@@ -419,14 +354,11 @@ class Program
             List<string> output = new List<string>();
             List<string> inputLines = new List<string>();
             int currentLine = 0;
-
-            // Setup console UI and interaction
             SetupConsole();
-            int lineNumberPadding = 3; // Adjust based on expected number of lines
+            int lineNumberPadding = 3;
 
             while (true)
             {
-                // Display the input prompt with line numbers and user-friendly commands
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.Write($"[{(currentLine + 1).ToString().PadLeft(lineNumberPadding)}]");
 
@@ -437,11 +369,7 @@ class Program
                 string line = Console.ReadLine()?.Trim();
 
                 if (string.IsNullOrWhiteSpace(line)) continue;
-
-                // Exit the program when the user types "exit"
                 if (line.ToLower() == "exit") break;
-
-                // Handle "back" command to remove previous line
                 if (line.ToLower() == "back")
                 {
                     if (currentLine > 0)
@@ -460,7 +388,6 @@ class Program
                     Console.ReadLine();
                     continue;
                 }
-                // Handle "compile" command to generate the Arduino file
                 if (line.ToLower() == "compile")
                 {
                     CompileCode(output);
@@ -498,8 +425,6 @@ class Program
                 Console.ResetColor();
                 Console.WriteLine();
             }
-
-            // Convert the simplified command into Arduino C++ code
             static string SimplifiedToArduino(string line)
             {
                 string lowerLine = line.ToLower();
@@ -516,7 +441,6 @@ class Program
 
                 if (lowerLine == "end loop")
                     return "}";
-                // All in regex — no dictionary needed
                 if ((match = Regex.Match(lowerLine,
                     @"^use\s+(wire|spi|eeprom|servo|lcd|fastled|neopixel|dht|sd|ir)$",
                     RegexOptions.IgnoreCase)).Success)
@@ -558,15 +482,15 @@ class Program
                 if ((match = Regex.Match(lowerLine, "^read digital pin (\\d+)$")).Success)
                     return $"digitalRead({match.Groups[1]});";
 
-                // Handle if condition
+                // if condition
                 if ((match = Regex.Match(lowerLine, "^if pin (\\d+) is (pressed|high|low)$")).Success)
                     return $"if (digitalRead({match.Groups[1]}) == {(match.Groups[2].Value == "low" ? "LOW" : "HIGH")}) {{";
 
-                // Handle other commands like loops, servo, and hydropump
+                // loops, servo, and hydropump
                 return HandleExtendedCommands(lowerLine);
             }
 
-            // Handle extended commands like servo motors, hydropump, math functions, etc.
+            // servo motors, hydropump, math functions, etc.
             static string HandleExtendedCommands(string lowerLine)
             {
                 Match match;
@@ -676,7 +600,7 @@ class Program
                 if ((match = Regex.Match(lowerLine, @"^call (\w+)$")).Success)
                     return $"{match.Groups[1]}();";
 
-                // Hydropump relay control
+                // Hydropump 
                 if ((match = Regex.Match(lowerLine, @"^set pin (\d+) as pump output$")).Success)
                     return $"pinMode({match.Groups[1]}, OUTPUT);";
                 if ((match = Regex.Match(lowerLine, @"^turn on hydropump at pin (\d+)$")).Success)
@@ -684,7 +608,7 @@ class Program
                 if ((match = Regex.Match(lowerLine, @"^turn off hydropump at pin (\d+)$")).Success)
                     return $"digitalWrite({match.Groups[1]}, LOW);";
 
-                // Math and Random functionsmath and random funtion math and random functions math n
+                // Math and Random 
                 if ((match = Regex.Match(lowerLine, @"^map (\w+) from (\d+)-(\d+) to (\d+)-(\d+)$")).Success)
                     return $"map({match.Groups[1]}, {match.Groups[2]}, {match.Groups[3]}, {match.Groups[4]}, {match.Groups[5]});";
                 if ((match = Regex.Match(lowerLine, @"^random number between (\d+) and (\d+)$")).Success)
@@ -729,7 +653,7 @@ class Program
                 {
                     Process.Start(new ProcessStartInfo
                     {
-                        FileName = "arduino", // Or full path: @"C:\Program Files (x86)\Arduino\arduino.exe"
+                        FileName = "arduino",
                         Arguments = $"\"{fullPath}\"",
                         UseShellExecute = true
                     });
@@ -740,8 +664,6 @@ class Program
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("❌ Could not open Arduino IDE: " + ex.Message);
                     Console.ResetColor();
-
-                    //open the .ino file in default editor
                     try
                     {
                         Process.Start(new ProcessStartInfo
@@ -755,8 +677,6 @@ class Program
                         Console.WriteLine("Could not open file: " + inner.Message);
                     }
                 }
-
-                //Wait for IDE to launch
                 Thread.Sleep(15000);
                 Console.Clear();
                 return fullPath;
@@ -811,7 +731,7 @@ class Program
                 LaunchEditor(neuroLines, output);
                 break;
             case 5:
-                string url = "https://www.google.com";
+                string url = "synk-academy.loveable.app";
                 Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });
                 break;
         }
@@ -996,5 +916,6 @@ class Program
 
 
     public record HelpEntry(string Command, string Syntax, string Example);
+
 
 }
